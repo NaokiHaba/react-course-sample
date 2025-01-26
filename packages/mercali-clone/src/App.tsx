@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Categories } from "./components";
 import { PageHeader, PageNavigation, PageFooter } from "./layouts";
-import { sneakersProductsMaster } from "./data";
+import { earringsProductsMaster, sneakersProductsMaster } from "./data";
 import { Products } from "./components";
 import { favorites } from "./data/favorites";
 
@@ -28,6 +28,12 @@ function App() {
 				</h2>
 				<Products
 					product={sneakersProductsMaster}
+					favoritesProduct={favoritesProduct}
+					handleAddFavorite={handleAddFavorite}
+					handleRemoveFavorite={handleRemoveFavorite}
+				/>
+				<Products
+					product={earringsProductsMaster}
 					favoritesProduct={favoritesProduct}
 					handleAddFavorite={handleAddFavorite}
 					handleRemoveFavorite={handleRemoveFavorite}
