@@ -1,27 +1,30 @@
-import { dummyTodoList } from "./data/dummyTodoList";
 import { TodoList } from "./components/TodoList";
-import { Todo } from "./types/todo";
-import { useState } from "react";
+import { AddTodoForm } from "./components/AddTodoForm";
+import { TodoSummary } from "./components/TodoSummary";
+import { useTodoList } from "./hooks/useTodoList";
 
 function App() {
-	const [todos, setTodos] = useState<Todo[]>(dummyTodoList);
-
-	const changeCompleted = (id: number) => {
-		setTodos((prevTodos) => {
-			return prevTodos.map((todo) => {
-				if (todo.id === id) {
-					return { ...todo, completed: !todo.completed };
-				}
-				return todo;
-			});
-		});
-	};
+	const {
+		todos,
+		addTodo,
+		completeTodo,
+		deleteTodo,
+		deleteAllTodosByCompleted,
+	} = useTodoList();
 
 	return (
 		<main className="mx-auto mt-10 max-w-xl">
 			<h1 className="text-center text-4xl">Todoアプリ</h1>
-			<div className="rounded bg-slate-200 p-5">
-				<TodoList todos={todos} changeCompleted={changeCompleted} />
+			<div className="space-y-5">
+				<AddTodoForm addTodo={addTodo} />
+				<div className="space-y-5 rounded bg-slate-200 p-5">
+					<TodoList
+						todos={todos}
+						completeTodo={completeTodo}
+						deleteTodo={deleteTodo}
+					/>
+					<TodoSummary deleteAllTodosByCompleted={deleteAllTodosByCompleted} />
+				</div>
 			</div>
 		</main>
 	);
