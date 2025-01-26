@@ -1,11 +1,12 @@
 import { Todo } from "../types/todo";
-
+import { TrashIcon } from "lucide-react";
 type Props = {
 	todos: Todo[];
-	changeCompleted: (id: number) => void;
+	completeTodo: (id: number) => void;
+	deleteTodo: (id: number) => void;
 };
 
-export const TodoList = ({ todos, changeCompleted }: Props) => {
+export const TodoList = ({ todos, completeTodo, deleteTodo }: Props) => {
 	return (
 		<div className="space-y-3">
 			{todos.map((todo) => (
@@ -19,7 +20,7 @@ export const TodoList = ({ todos, changeCompleted }: Props) => {
 								type="checkbox"
 								className="size-5"
 								checked={todo.completed}
-								onChange={() => changeCompleted(todo.id)}
+								onChange={() => completeTodo(todo.id)}
 							/>
 						</div>
 						<span
@@ -28,8 +29,15 @@ export const TodoList = ({ todos, changeCompleted }: Props) => {
 							{todo.title}
 						</span>
 					</label>
+					<button onClick={() => deleteTodo(todo.id)}>
+						<TrashIcon className="text-red-500" />
+					</button>
 				</div>
 			))}
+
+			{todos.length === 0 && (
+				<p className="text-center text-gray-400">Todoがありません</p>
+			)}
 		</div>
 	);
 };
