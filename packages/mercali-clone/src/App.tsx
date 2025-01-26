@@ -1,24 +1,14 @@
-import { navigationMenus } from "./constant";
+import { Categories } from "./components";
+import { PageNavigation } from "./layouts";
 
 function App() {
 	return (
 		<>
+			<div className="sticky top-0 z-10 bg-white">
+				<Categories />
+			</div>
 			<div className="min-h-screen" />
-			<nav className="sticky bottom-0 z-10 border-t border-secondary-border bg-white lg:hidden">
-				<ul className="grid grid-cols-4">
-					{navigationMenus.map((menu) => (
-						<li key={menu.label}>
-							<a
-								href={menu.path}
-								className="flex flex-col items-center justify-center gap-1 py-1.5 text-xs hover:bg-secondary-hover"
-							>
-								<menu.icon className="size-[24px] stroke-2" />
-								<span className="text-xs">{menu.label}</span>
-							</a>
-						</li>
-					))}
-				</ul>
-			</nav>
+			<PageNavigation />
 		</>
 	);
 }
