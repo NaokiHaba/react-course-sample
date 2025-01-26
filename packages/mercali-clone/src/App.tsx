@@ -1,5 +1,5 @@
 import { Categories } from "./components";
-import { PageHeader, PageNavigation } from "./layouts";
+import { PageHeader, PageNavigation, PageFooter } from "./layouts";
 
 function App() {
 	return (
@@ -10,6 +10,7 @@ function App() {
 			</div>
 			<div className="min-h-screen" />
 			<PageNavigation />
+			<PageFooter />
 		</>
 	);
 }
