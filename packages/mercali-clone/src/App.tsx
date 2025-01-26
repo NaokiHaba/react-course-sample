@@ -1,5 +1,7 @@
 import { Categories } from "./components";
 import { PageHeader, PageNavigation, PageFooter } from "./layouts";
+import { sneakersProductsMaster } from "./data";
+import { Products } from "./components";
 
 function App() {
 	return (
@@ -8,7 +10,12 @@ function App() {
 				<PageHeader />
 				<Categories />
 			</div>
-			<div className="min-h-screen" />
+			<main className="container mx-auto max-w-screen-xl p-5 lg:p-10">
+				<h2 className="pb-5 text-lg font-bold text-secondary-text lg:text-xl">
+					閲覧した商品からのおすすめ
+				</h2>
+				<Products product={sneakersProductsMaster} />
+			</main>
 			<PageNavigation />
 			<PageFooter />
 		</>
