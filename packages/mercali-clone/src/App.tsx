@@ -1,20 +1,13 @@
-import { useState } from "react";
 import { Categories } from "./components";
 import { PageHeader, PageNavigation, PageFooter } from "./layouts";
 import { earringsProductsMaster, sneakersProductsMaster } from "./data";
 import { Products } from "./components";
 import { favorites } from "./data/favorites";
+import { useFavorite } from "./hooks";
 
 function App() {
-	const [favoritesProduct, setFavoritesProduct] = useState(favorites);
-
-	const handleAddFavorite = (productCode: string) => {
-		setFavoritesProduct((prev) => [...prev, productCode]);
-	};
-
-	const handleRemoveFavorite = (productCode: string) => {
-		setFavoritesProduct((prev) => prev.filter((code) => code !== productCode));
-	};
+	const { favoritesProduct, updateFavorite, removeFavorite } =
+		useFavorite(favorites);
 
 	return (
 		<>
@@ -29,14 +22,14 @@ function App() {
 				<Products
 					product={sneakersProductsMaster}
 					favoritesProduct={favoritesProduct}
-					handleAddFavorite={handleAddFavorite}
-					handleRemoveFavorite={handleRemoveFavorite}
+					updateFavorite={updateFavorite}
+					removeFavorite={removeFavorite}
 				/>
 				<Products
 					product={earringsProductsMaster}
 					favoritesProduct={favoritesProduct}
-					handleAddFavorite={handleAddFavorite}
-					handleRemoveFavorite={handleRemoveFavorite}
+					updateFavorite={updateFavorite}
+					removeFavorite={removeFavorite}
 				/>
 			</main>
 			<PageNavigation />
