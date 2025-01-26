@@ -4,15 +4,15 @@ import { Heart } from "lucide-react";
 type Props = {
 	product: ProductItemType;
 	favoritesProduct: string[];
-	handleAddFavorite: (productCode: string) => void;
-	handleRemoveFavorite: (productCode: string) => void;
+	updateFavorite: (productCode: string) => void;
+	removeFavorite: (productCode: string) => void;
 };
 
 export const ProductItem = ({
 	product,
 	favoritesProduct,
-	handleAddFavorite,
-	handleRemoveFavorite,
+	updateFavorite,
+	removeFavorite,
 }: Props) => {
 	return (
 		<a href="/" className="group flex h-full flex-col gap-2">
@@ -34,9 +34,9 @@ export const ProductItem = ({
 					onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
 						e.preventDefault();
 						if (favoritesProduct.includes(product.code)) {
-							handleRemoveFavorite(product.code);
+							removeFavorite(product.code);
 						} else {
-							handleAddFavorite(product.code);
+							updateFavorite(product.code);
 						}
 					}}
 				>
