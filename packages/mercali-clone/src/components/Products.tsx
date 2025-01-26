@@ -5,15 +5,15 @@ import { ProductItem } from "./ProductItem";
 type Props = {
 	product: Product;
 	favoritesProduct: string[];
-	handleAddFavorite: (productCode: string) => void;
-	handleRemoveFavorite: (productCode: string) => void;
+	updateFavorite: (productCode: string) => void;
+	removeFavorite: (productCode: string) => void;
 };
 
 export const Products = ({
 	product,
 	favoritesProduct,
-	handleAddFavorite,
-	handleRemoveFavorite,
+	updateFavorite,
+	removeFavorite,
 }: Props) => {
 	return (
 		<section className="space-y-6 border-t border-secondary-border py-6">
@@ -27,8 +27,8 @@ export const Products = ({
 						<ProductItem
 							product={item}
 							favoritesProduct={favoritesProduct}
-							handleAddFavorite={handleAddFavorite}
-							handleRemoveFavorite={handleRemoveFavorite}
+							updateFavorite={updateFavorite}
+							removeFavorite={removeFavorite}
 						/>
 					</li>
 				))}
